@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.RowConstraints?>
+
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<GridPane alignment="center" hgap="10" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.MainController">
+    <Label GridPane.rowIndex="1" GridPane.columnIndex="1" text="Username:"/>
+    <TextField GridPane.rowIndex="1" GridPane.columnIndex="2" fx:id="usernameTextLogin" />
+    <Label GridPane.rowIndex="2" GridPane.columnIndex="1" text="Password:"/>
+    <TextField GridPane.rowIndex="2" GridPane.columnIndex="2" fx:id="passwordTextLogin" />
+    <Button GridPane.rowIndex="3" GridPane.columnIndex="2" onAction="#login" text="LOGIN"/>
+    <Label GridPane.rowIndex="1" GridPane.columnIndex="4" text="Username:"/>
+    <TextField GridPane.rowIndex="1" GridPane.columnIndex="5" fx:id="usernameTextRegister"/>
+    <Label GridPane.rowIndex="2" GridPane.columnIndex="4" text="Password:"/>
+    <TextField GridPane.rowIndex="2" GridPane.columnIndex="5" fx:id="passwordRegister"/>
+    <Label GridPane.rowIndex="3" GridPane.columnIndex="4" text="Email:"/>
+    <TextField GridPane.rowIndex="3" GridPane.columnIndex="5" fx:id="emailRegister"/>
+    <Button GridPane.rowIndex="4" GridPane.columnIndex="5" text="REGISTER" onAction="#register"/>
+</GridPane>
