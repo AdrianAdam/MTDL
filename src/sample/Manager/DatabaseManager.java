@@ -11,6 +11,8 @@ public class DatabaseManager {
     private Connection connection;
     private static DatabaseManager single_instance = null;
 
+    public User currentUser = null;
+
     private DatabaseManager() throws ClassNotFoundException, IllegalAccessException, InstantiationException, SQLException {
         Class.forName("com.mysql.cj.jdbc.Driver").newInstance();
 
@@ -55,7 +57,8 @@ public class DatabaseManager {
 
     public List<Robot> selectAllRobots() {
         try {
-            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Robot");
+            PreparedStatement statement = connection.prepareStatement("SELECT * FROM Robot WHERE user_id = ?");
+            statement.setInt(1, currentUser.getId());
             ResultSet resultSet = statement.executeQuery();
             List<Robot> robots = new ArrayList<Robot>();
 

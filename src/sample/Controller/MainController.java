@@ -31,7 +31,8 @@ public class MainController {
 
         for(int i = 0; i < users.size(); i++) {
             if(users.get(i).getUsername().equals(usernameTextLogin.getText()) && users.get(i).getPassword().equals(passwordTextLogin.getText())) {
-                Parent centralWindow = FXMLLoader.load(getClass().getResource("Layout/centralLayout.fxml"));
+                databaseManager.currentUser = users.get(i);
+                Parent centralWindow = FXMLLoader.load(getClass().getResource("../Layout/centralLayout.fxml"));
                 Scene centralScene = new Scene(centralWindow);
 
                 Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
@@ -44,13 +45,5 @@ public class MainController {
 
     public void register(ActionEvent actionEvent) throws SQLException, IOException {
         databaseManager.insertNewUser(usernameTextRegister.getText(), passwordRegister.getText(), emailRegister.getText());
-
-        Parent centralWindow = FXMLLoader.load(getClass().getResource("Layout/centralLayout.fxml"));
-        Scene centralScene = new Scene(centralWindow);
-
-        Stage window = (Stage)((Node)actionEvent.getSource()).getScene().getWindow();
-
-        window.setScene(centralScene);
-        window.show();
     }
 }
