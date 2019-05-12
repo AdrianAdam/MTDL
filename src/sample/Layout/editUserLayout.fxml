@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.layout.*?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+<GridPane alignment="center" hgap="10" prefHeight="1080.0" prefWidth="1920.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.EditUserController">
+    <Button onAction="#getUser" text="Get current user" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Button onAction="#goBack" text="Back" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+    <Label text="Username:" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <TextField fx:id="usernameText" GridPane.columnIndex="2" GridPane.rowIndex="2" />
+    <Label text="Email:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <TextField fx:id="emailText" GridPane.columnIndex="2" GridPane.rowIndex="3" />
+    <Label text="Password:" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <TextField fx:id="passwordText" GridPane.columnIndex="2" GridPane.rowIndex="4" />
+    <Label text="Role" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    <Label fx:id="roleText" GridPane.columnIndex="2" GridPane.rowIndex="5" />
+    <Label text="Number Robots" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+    <Label fx:id="noRobotsText" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+    <Button onAction="#saveEdit" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+</GridPane>

@@ -55,6 +55,20 @@ public class DatabaseManager {
         }
     }
 
+    public void updateUser(User user) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement
+                ("UPDATE User SET name=?, role=?, password=?, email=?, no_robots=? WHERE user_id=?");
+        statement.setString(1, user.getUsername());
+        statement.setString(2, user.getRole());
+        statement.setString(3, user.getPassword());
+        statement.setString(4, user.getEmail());
+        statement.setInt(5, user.getNoRobots());
+        statement.setInt(6, user.getId());
+        statement.execute();
+
+        currentUser = user;
+    }
+
     public List<Robot> selectAllRobots() {
         try {
             PreparedStatement statement = connection.prepareStatement("SELECT * FROM Robot WHERE user_id = ?");
