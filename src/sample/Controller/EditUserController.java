@@ -17,17 +17,24 @@ public class EditUserController {
     public TextField passwordText;
     public Label roleText;
     public Label noRobotsText;
+    public Label editError;
     private DatabaseManager databaseManager = DatabaseManager.getInstance();
     private LayoutController layoutController = new LayoutController();
+    private ValidateDataController validateDataController = new ValidateDataController();
 
     public EditUserController() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
     }
 
     public void saveEdit(ActionEvent actionEvent) throws SQLException {
-        User user = new User(databaseManager.currentUser.getId(), usernameText.getText(),
-                             roleText.getText(), passwordText.getText(), emailText.getText(), Integer.parseInt(noRobotsText.getText()));
-        databaseManager.updateUser(user);
-        getUser(actionEvent);
+        editError.setText("");
+
+        if(validateDataController.validatePassword(passwordText.getText(), editError)
+                && validateDataController.validateNameEmail(usernameText.getText(), emailText.getText(), editError)) {
+            User user = new User(databaseManager.currentUser.getId(), usernameText.getText(),
+                    roleText.getText(), passwordText.getText(), emailText.getText(), Integer.parseInt(noRobotsText.getText()));
+            databaseManager.updateUser(user);
+            getUser(actionEvent);
+        }
     }
 
     public void getUser(ActionEvent actionEvent) {
