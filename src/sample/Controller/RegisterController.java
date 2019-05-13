@@ -8,14 +8,14 @@ import java.sql.SQLException;
 public class RegisterController {
 
     private DatabaseManager databaseManager = DatabaseManager.getInstance();
-    private ValidateDataController validateDataController = new ValidateDataController();
+    private ValidateUserDataController validateUserDataController = new ValidateUserDataController();
 
     public RegisterController() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
     }
 
     public void registerUser(String username, String password, String email, Label error) throws SQLException {
-        if(validateDataController.validatePassword(password, error)
-                && validateDataController.validateNameEmail(username, email, error)) {
+        if(validateUserDataController.validatePassword(password, error)
+                && validateUserDataController.validateNameEmail(username, email, error)) {
             databaseManager.insertNewUser(username, password, email);
         }
     }

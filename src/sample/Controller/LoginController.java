@@ -15,13 +15,13 @@ public class LoginController {
 
     private DatabaseManager databaseManager = DatabaseManager.getInstance();
     private LayoutController layoutController = new LayoutController();
-    private ValidateDataController validateDataController = new ValidateDataController();
+    private ValidateUserDataController validateUserDataController = new ValidateUserDataController();
 
     public LoginController() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
     }
 
     public void loginUser(String username, String password, ActionEvent actionEvent, Label error) throws IOException {
-        if(validateDataController.validateName(username, error) && validateDataController.validatePassword(password, error)) {
+        if(validateUserDataController.validateName(username, error) && validateUserDataController.validatePassword(password, error)) {
             List<User> users;
             users = databaseManager.selectAllUsers();
 

@@ -7,11 +7,11 @@ import sample.Model.User;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ValidateDataController {
+public class ValidateUserDataController {
 
     private DatabaseManager databaseManager = DatabaseManager.getInstance();
 
-    public ValidateDataController() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    public ValidateUserDataController() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
     }
 
     public boolean validateNameEmail(String name, String email, Label error) {
