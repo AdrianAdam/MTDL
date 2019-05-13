@@ -55,6 +55,17 @@ public class DatabaseManager {
         }
     }
 
+    public void insertNewUser(String username, String password, String email) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement
+                ("INSERT INTO User (name, role, password, email, no_robots) VALUES (?, ?, ?, ?, ?)");
+        statement.setString(1, username);
+        statement.setString(2, "admin");
+        statement.setString(3, password);
+        statement.setString(4, email);
+        statement.setInt(5, 0);
+        statement.execute();
+    }
+
     public void updateUser(User user) throws SQLException {
         PreparedStatement statement = connection.prepareStatement
                 ("UPDATE User SET name=?, role=?, password=?, email=?, no_robots=? WHERE user_id=?");
@@ -100,14 +111,39 @@ public class DatabaseManager {
         }
     }
 
-    public void insertNewUser(String username, String password, String email) throws SQLException {
+    public void updateRobot(Robot robot) throws SQLException {
         PreparedStatement statement = connection.prepareStatement
-                ("INSERT INTO User (name, role, password, email, no_robots) VALUES (?, ?, ?, ?, ?)");
-        statement.setString(1, username);
-        statement.setString(2, "admin");
-        statement.setString(3, password);
-        statement.setString(4, email);
-        statement.setInt(5, 0);
+                ("UPDATE Robot SET name=?, state=?, coordX=?, coordY=?, type=?, icon=?, image=?, connectivite=? WHERE robot_id=?");
+        statement.setString(1, robot.getName());
+        statement.setString(2, robot.getState());
+        statement.setInt(3, robot.getCoordX());
+        statement.setInt(4, robot.getCoordY());
+        statement.setString(5, robot.getType());
+        statement.setString(6, robot.getIcon());
+        statement.setString(7, robot.getImage());
+        statement.setString(8, robot.getConnectivity());
+        statement.setInt(9, robot.getRobot_id());
+        statement.execute();
+    }
+
+    public void insertNewRobot(String name, String state, int coordX, int coordY, String type, String icon, String image, String connectivity) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement
+                ("INSERT INTO Robot (user_id, name, state, coordX, coordY, type, icon, image, connectivite) VALES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        statement.setInt(1, currentUser.getId());
+        statement.setString(2, name);
+        statement.setString(3, state);
+        statement.setInt(4, coordX);
+        statement.setInt(5, coordY);
+        statement.setString(6, type);
+        statement.setString(7, icon);
+        statement.setString(8, image);
+        statement.setString(9, connectivity);
+        statement.execute();
+    }
+
+    public void deleteRobot(String name) throws SQLException {
+        PreparedStatement statement = connection.prepareStatement("DELETE FROM Robot WHERE name=?");
+        statement.setString(1, name);
         statement.execute();
     }
 }
