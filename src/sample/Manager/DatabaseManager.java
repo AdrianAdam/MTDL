@@ -98,18 +98,18 @@ public class DatabaseManager {
         }
     }
 
-    public void updateRobot(Robot robot) throws SQLException {
+    public void updateRobot(String name, String state, int coordX, int coordY, String type, String icon, String image, String connectivity) throws SQLException {
         PreparedStatement statement = connection.prepareStatement
-                ("UPDATE Robot SET name=?, state=?, coordX=?, coordY=?, type=?, icon=?, image=?, connectivite=? WHERE robot_id=?");
-        statement.setString(1, robot.getName());
-        statement.setString(2, robot.getState());
-        statement.setInt(3, robot.getCoordX());
-        statement.setInt(4, robot.getCoordY());
-        statement.setString(5, robot.getType());
-        statement.setString(6, robot.getIcon());
-        statement.setString(7, robot.getImage());
-        statement.setString(8, robot.getConnectivity());
-        statement.setInt(9, robot.getRobot_id());
+                ("UPDATE Robot SET name=?, state=?, coordX=?, coordY=?, type=?, icon=?, image=?, connectivite=? WHERE name=?");
+        statement.setString(1, name);
+        statement.setString(2, state);
+        statement.setInt(3, coordX);
+        statement.setInt(4, coordY);
+        statement.setString(5, type);
+        statement.setString(6, icon);
+        statement.setString(7, image);
+        statement.setString(8, connectivity);
+        statement.setString(9, name);
         statement.execute();
     }
 
@@ -164,5 +164,15 @@ public class DatabaseManager {
         Robot r = new Robot(robot_id, user_id, name, state, coordX, coordY, type, icon, image, connectivite);
 
         return r;
+    }
+
+    public int getNumberRobots() throws SQLException {
+        PreparedStatement statement = connection.prepareStatement
+                ("SELECT COUNT(*) FROM Robot WHERE user_id=?");
+        statement.setInt(1, currentUser.getId());
+        ResultSet resultSet = statement.executeQuery();
+        resultSet.next();
+        System.out.println(resultSet.getInt(1));
+        return resultSet.getInt(1);
     }
 }
