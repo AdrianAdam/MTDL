@@ -88,20 +88,7 @@ public class DatabaseManager {
             List<Robot> robots = new ArrayList<Robot>();
 
             while(resultSet.next()) {
-                int robot_id = resultSet.getInt("robot_id");
-                int user_id = resultSet.getInt("user_id");
-                String name = resultSet.getString("name");
-                String state = resultSet.getString("state");
-                int coordX = resultSet.getInt("coordX");
-                int coordY = resultSet.getInt("coordY");
-                String type = resultSet.getString("type");
-                String icon = resultSet.getString("icon");
-                String image = resultSet.getString("image");
-                String connectivite = resultSet.getString("connectivite");
-
-                Robot r = new Robot(robot_id, user_id, name, state, coordX, coordY, type, icon, image, connectivite);
-
-                robots.add(r);
+                robots.add(getRobotDetails(resultSet));
             }
 
             return robots;
@@ -128,7 +115,7 @@ public class DatabaseManager {
 
     public void insertNewRobot(String name, String state, int coordX, int coordY, String type, String icon, String image, String connectivity) throws SQLException {
         PreparedStatement statement = connection.prepareStatement
-                ("INSERT INTO Robot (user_id, name, state, coordX, coordY, type, icon, image, connectivite) VALES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                ("INSERT INTO Robot (user_id, name, state, coordX, coordY, type, icon, image, connectivite) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
         statement.setInt(1, currentUser.getId());
         statement.setString(2, name);
         statement.setString(3, state);
@@ -145,5 +132,37 @@ public class DatabaseManager {
         PreparedStatement statement = connection.prepareStatement("DELETE FROM Robot WHERE name=?");
         statement.setString(1, name);
         statement.execute();
+    }
+
+    public Robot selectOneRobot(String robot_name) throws SQLException {
+        Robot robot = new Robot();
+
+        PreparedStatement statement = connection.prepareStatement
+                ("SELECT * FROM Robot WHERE name=?");
+        statement.setString(1, robot_name);
+        ResultSet resultSet = statement.executeQuery();
+
+        while(resultSet.next()) {
+            robot = getRobotDetails(resultSet);
+        }
+
+        return robot;
+    }
+
+    public Robot getRobotDetails(ResultSet resultSet) throws SQLException {
+        int robot_id = resultSet.getInt("robot_id");
+        int user_id = resultSet.getInt("user_id");
+        String name = resultSet.getString("name");
+        String state = resultSet.getString("state");
+        int coordX = resultSet.getInt("coordX");
+        int coordY = resultSet.getInt("coordY");
+        String type = resultSet.getString("type");
+        String icon = resultSet.getString("icon");
+        String image = resultSet.getString("image");
+        String connectivite = resultSet.getString("connectivite");
+
+        Robot r = new Robot(robot_id, user_id, name, state, coordX, coordY, type, icon, image, connectivite);
+
+        return r;
     }
 }
