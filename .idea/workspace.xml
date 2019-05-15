@@ -2,12 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/out/production/MTDLProject/sample/Controller/ValidateRobotDataController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/out/production/MTDLProject/sample/Layout/robotManagementLayout.fxml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/sample/Controller/ValidateRobotDataController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTDLProject/sample/Controller/EditUserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTDLProject/sample/Controller/EditUserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTDLProject/sample/Controller/LoginController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTDLProject/sample/Controller/LoginController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTDLProject/sample/Controller/RegisterController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTDLProject/sample/Controller/RegisterController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTDLProject/sample/Controller/RobotManagementController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTDLProject/sample/Controller/RobotManagementController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/out/production/MTDLProject/sample/Controller/ValidateDataController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/out/production/MTDLProject/sample/Controller/ValidateDataController.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTDLProject/sample/Controller/ValidateUserDataController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTDLProject/sample/Layout/robotMangementLayout.fxml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/out/production/MTDLProject/sample/Manager/DatabaseManager.class" beforeDir="false" afterPath="$PROJECT_DIR$/out/production/MTDLProject/sample/Manager/DatabaseManager.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/sample/Controller/RobotManagementController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Controller/RobotManagementController.java" afterDir="false" />
@@ -128,11 +131,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/sample/Manager/DatabaseManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="480">
-              <caret line="173" column="25" selection-start-line="173" selection-start-column="25" selection-end-line="173" selection-end-column="25" />
+            <state relative-caret-position="180">
+              <caret line="154" column="47" selection-start-line="154" selection-start-column="47" selection-end-line="154" selection-end-column="47" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -148,6 +151,16 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/sample/Layout/robotManagementLayout.fxml">
+          <provider editor-type-id="JavaFX-Scene-Builder" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="15">
+              <caret line="1" selection-start-line="1" selection-end-line="1" />
             </state>
           </provider>
         </entry>
@@ -193,12 +206,12 @@
         <option value="$PROJECT_DIR$/src/sample/Controller/EditUserController.java" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/.datagrid/cell" />
         <option value="$PROJECT_DIR$/src/sample/Layout/robotMangementLayout.fxml" />
-        <option value="$PROJECT_DIR$/src/sample/Layout/robotManagementLayout.fxml" />
         <option value="$APPLICATION_CONFIG_DIR$/consoles/db/b10b7a73-888b-4636-b496-3935a7ee582e/console.sql" />
         <option value="b10b7a73-888b-4636-b496-3935a7ee582e/schema/MTDLProject/table/Robot.sql" />
         <option value="$PROJECT_DIR$/src/sample/Controller/ValidateRobotDataController.java" />
         <option value="$PROJECT_DIR$/src/sample/Controller/RobotManagementController.java" />
         <option value="$PROJECT_DIR$/src/sample/Manager/DatabaseManager.java" />
+        <option value="$PROJECT_DIR$/src/sample/Layout/robotManagementLayout.fxml" />
       </list>
     </option>
   </component>
@@ -432,18 +445,18 @@
       <workItem from="1557689483240" duration="81000" />
       <workItem from="1557734905770" duration="593000" />
       <workItem from="1557749644791" duration="4438000" />
-      <workItem from="1557915713798" duration="1613000" />
+      <workItem from="1557915713798" duration="1754000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37475000" />
+    <option name="totallyTimeSpent" value="37616000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="27" width="1920" height="1053" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.15635005" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.6703755" visible="true" weight="0.15635005" />
       <window_info id="Structure" order="1" weight="0.25" />
       <window_info id="Favorites" order="2" />
       <window_info id="Designer" order="3" />
@@ -452,7 +465,7 @@
       <window_info id="UI Designer" order="6" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" visible="true" weight="0.24100327" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.24100327" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991276" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -660,15 +673,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="das://b10b7a73-888b-4636-b496-3935a7ee582e/schema/MTDLProject/table/Robot">
-      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
-        <state>
-          <filtering enabled="true">
-            <filter text="" />
-          </filtering>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Model/Robot.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="135">
@@ -676,14 +680,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/sample/Layout/robotManagementLayout.fxml">
-      <provider editor-type-id="JavaFX-Scene-Builder" />
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="525">
-          <caret line="35" column="27" selection-start-line="35" selection-start-column="27" selection-end-line="35" selection-end-column="27" />
         </state>
       </provider>
     </entry>
@@ -707,13 +703,30 @@
         </state>
       </provider>
     </entry>
+    <entry file="das://b10b7a73-888b-4636-b496-3935a7ee582e/schema/MTDLProject/table/Robot">
+      <provider selected="true" editor-type-id="com.intellij.database.editor.DatabaseTableFileEditorProvider">
+        <state>
+          <filtering enabled="true">
+            <filter text="" />
+          </filtering>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/sample/Manager/DatabaseManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="480">
-          <caret line="173" column="25" selection-start-line="173" selection-start-column="25" selection-end-line="173" selection-end-column="25" />
+        <state relative-caret-position="180">
+          <caret line="154" column="47" selection-start-line="154" selection-start-column="47" selection-end-line="154" selection-end-column="47" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/sample/Layout/robotManagementLayout.fxml">
+      <provider editor-type-id="JavaFX-Scene-Builder" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="15">
+          <caret line="1" selection-start-line="1" selection-end-line="1" />
         </state>
       </provider>
     </entry>
