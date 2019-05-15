@@ -1,11 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.shape.Rectangle?>
 
 <GridPane alignment="center" hgap="10" prefHeight="1080.0" prefWidth="1920.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ScenarioController">
+    <Label text="Robots:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
+    <Button onAction="#getRobots" text="Get robots" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+    <Button onAction="#goBack" text="Back" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+    <Label fx:id="robot1" onMouseClicked="#startMoving" GridPane.columnIndex="1" GridPane.rowIndex="2" />
+    <Label fx:id="robot2" onMouseClicked="#startMoving" GridPane.columnIndex="1" GridPane.rowIndex="3" />
+    <Label fx:id="robot3" onMouseClicked="#startMoving" GridPane.columnIndex="1" GridPane.rowIndex="4" />
+    <Label fx:id="robot4" onMouseClicked="#startMoving" GridPane.columnIndex="1" GridPane.rowIndex="5" />
+    <Label fx:id="robot5" onMouseClicked="#startMoving" GridPane.columnIndex="1" GridPane.rowIndex="6" />
+    <Label fx:id="robot6" onMouseClicked="#startMoving" GridPane.columnIndex="1" GridPane.rowIndex="7" />
+    <Label fx:id="robot7" onMouseClicked="#startMoving" GridPane.columnIndex="1" GridPane.rowIndex="8" />
+    <Label fx:id="robot8" onMouseClicked="#startMoving" GridPane.columnIndex="1" GridPane.rowIndex="9" />
+    <Label fx:id="robot9" onMouseClicked="#startMoving" GridPane.columnIndex="1" GridPane.rowIndex="10" />
+    <Label fx:id="robot10" onMouseClicked="#startMoving" GridPane.columnIndex="1" GridPane.rowIndex="11" />
 
+    <Rectangle arcHeight="5.0" arcWidth="5.0" height="500.0" onMouseClicked="#startMoving" stroke="BLACK" strokeType="INSIDE" width="800.0" x="500.0" y="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" />
 </GridPane>
