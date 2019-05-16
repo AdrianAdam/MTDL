@@ -1,4 +1,4 @@
-package sample.Controller;
+package sample.Validators;
 
 import javafx.scene.control.Label;
 import sample.Manager.DatabaseManager;
@@ -7,11 +7,11 @@ import sample.Model.Robot;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ValidateRobotDataController {
+public class ValidateRobotData {
 
     private DatabaseManager databaseManager = DatabaseManager.getInstance();
 
-    public ValidateRobotDataController() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    public ValidateRobotData() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
     }
 
     public boolean validateNameExists(String name) {

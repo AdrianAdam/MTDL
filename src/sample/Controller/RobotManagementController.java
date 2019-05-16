@@ -7,6 +7,7 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 import sample.Manager.DatabaseManager;
 import sample.Model.Robot;
+import sample.Validators.ValidateRobotData;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -29,7 +30,7 @@ public class RobotManagementController {
 
     private LayoutController layoutController = new LayoutController();
     private DatabaseManager databaseManager = DatabaseManager.getInstance();
-    private ValidateRobotDataController validateRobotDataController = new ValidateRobotDataController();
+    private ValidateRobotData validateRobotData = new ValidateRobotData();
 
     private Robot currentRobotToEdit = null;
 
@@ -41,22 +42,24 @@ public class RobotManagementController {
     }
 
     public void saveEdit(ActionEvent actionEvent) throws SQLException {
-        if (validateRobotDataController.validateNameExists(nameEditText.getText())
-                && validateRobotDataController.validateAllData(nameEditText.getText(), typeEditText.getText(),
+        if (validateRobotData.validateNameExists(nameEditText.getText())
+                && validateRobotData.validateAllData(nameEditText.getText(), typeEditText.getText(),
                 iconEditText.getText(), imageEditText.getText(), connectivityEditText.getText(), editError)) {
+            String path = "/home/adrianadam/Desktop/FILS/Anul 3/Sem 2/MTDL/MTDLProject/src/sample/Resources/" + imageEditText.getText();
             databaseManager.updateRobot(nameEditText.getText(), currentRobotToEdit.getState(), currentRobotToEdit.getCoordX(),
-                    currentRobotToEdit.getCoordY(), typeEditText.getText(), iconEditText.getText(), imageEditText.getText(), connectivityEditText.getText());
+                    currentRobotToEdit.getCoordY(), typeEditText.getText(), iconEditText.getText(), path, connectivityEditText.getText());
         }
     }
 
     public void searchEdit(ActionEvent actionEvent) throws SQLException {
-        if (validateRobotDataController.validateNameExists(nameEditText.getText())) {
-            Robot robot = new Robot();
-            robot = databaseManager.selectOneRobot(nameEditText.getText());
+        if (validateRobotData.validateNameExists(nameEditText.getText())) {
+            Robot robot = databaseManager.selectOneRobot(nameEditText.getText());
+
+            String[] path = robot.getImage().split("/");
 
             typeEditText.setText(robot.getType());
             iconEditText.setText(robot.getIcon());
-            imageEditText.setText(robot.getImage());
+            imageEditText.setText(path[path.length - 1]);
             connectivityEditText.setText(robot.getConnectivity());
 
             currentRobotToEdit = robot;
@@ -64,18 +67,19 @@ public class RobotManagementController {
     }
 
     public void saveCreate(ActionEvent actionEvent) throws SQLException {
-        if (validateRobotDataController.validateAllData(nameCreateText.getText(), typeCreateText.getText(), iconCreateText.getText(),
+        if (validateRobotData.validateAllData(nameCreateText.getText(), typeCreateText.getText(), iconCreateText.getText(),
                 imageCreateText.getText(), connectivityCreateText.getText(), createError)
-                && !validateRobotDataController.validateNameExists(nameCreateText.getText())
-                && validateRobotDataController.validateNumberRobots()) {
+                && !validateRobotData.validateNameExists(nameCreateText.getText())
+                && validateRobotData.validateNumberRobots()) {
+            String path = "/home/adrianadam/Desktop/FILS/Anul 3/Sem 2/MTDL/MTDLProject/src/sample/Resources/" + imageCreateText.getText();
             databaseManager.insertNewRobot(nameCreateText.getText(), "idle", 0, 0, typeCreateText.getText(),
-                    iconCreateText.getText(), imageCreateText.getText(), connectivityCreateText.getText());
+                    iconCreateText.getText(), path, connectivityCreateText.getText());
         }
     }
 
     public void deleteRobot(ActionEvent actionEvent) throws SQLException {
-        if (validateRobotDataController.validateName(nameDeleteText.getText())
-                && validateRobotDataController.validateNameExists(nameDeleteText.getText())) {
+        if (validateRobotData.validateName(nameDeleteText.getText())
+                && validateRobotData.validateNameExists(nameDeleteText.getText())) {
             databaseManager.deleteRobot(nameDeleteText.getText());
         }
     }

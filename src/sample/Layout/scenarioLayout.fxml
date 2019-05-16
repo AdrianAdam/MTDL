@@ -5,6 +5,7 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.shape.Rectangle?>
 
+<?import javafx.scene.control.TextField?>
 <GridPane alignment="center" hgap="10" prefHeight="1080.0" prefWidth="1920.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ScenarioController">
     <Label text="Robots:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     <Button onAction="#getRobots" text="Get robots" GridPane.columnIndex="2" GridPane.rowIndex="1" />
@@ -21,4 +22,10 @@
     <Label fx:id="robot10" onMouseClicked="#startMoving" GridPane.columnIndex="1" GridPane.rowIndex="11" />
 
     <Rectangle arcHeight="5.0" arcWidth="5.0" height="500.0" onMouseClicked="#startMoving" stroke="BLACK" strokeType="INSIDE" width="800.0" x="500.0" y="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" />
+
+    <Button onAction="#moveUp" text="Move Up" GridPane.columnIndex="2" GridPane.rowIndex="13" />
+    <Button onAction="#moveLeft" text="Move Left" GridPane.columnIndex="1" GridPane.rowIndex="14" />
+    <Button onAction="#moveRight" text="Move Right" GridPane.columnIndex="3" GridPane.rowIndex="14" />
+    <Button onAction="#moveDown" text="Move Down" GridPane.columnIndex="2" GridPane.rowIndex="15" />
+    <TextField fx:id="moveValue" GridPane.columnIndex="2" GridPane.rowIndex="14" />
 </GridPane>

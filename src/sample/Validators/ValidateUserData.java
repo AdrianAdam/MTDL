@@ -1,4 +1,4 @@
-package sample.Controller;
+package sample.Validators;
 
 import javafx.scene.control.Label;
 import sample.Manager.DatabaseManager;
@@ -7,11 +7,11 @@ import sample.Model.User;
 import java.sql.SQLException;
 import java.util.List;
 
-public class ValidateUserDataController {
+public class ValidateUserData {
 
     private DatabaseManager databaseManager = DatabaseManager.getInstance();
 
-    public ValidateUserDataController() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
+    public ValidateUserData() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
     }
 
     public boolean validateNameEmail(String name, String email, Label error) {

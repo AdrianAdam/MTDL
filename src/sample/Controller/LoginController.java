@@ -6,6 +6,7 @@ import javafx.scene.control.Label;
 import javafx.stage.Stage;
 import sample.Manager.DatabaseManager;
 import sample.Model.User;
+import sample.Validators.ValidateUserData;
 
 import java.io.IOException;
 import java.sql.SQLException;
@@ -15,13 +16,13 @@ public class LoginController {
 
     private DatabaseManager databaseManager = DatabaseManager.getInstance();
     private LayoutController layoutController = new LayoutController();
-    private ValidateUserDataController validateUserDataController = new ValidateUserDataController();
+    private ValidateUserData validateUserData = new ValidateUserData();
 
     public LoginController() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
     }
 
     public void loginUser(String username, String password, ActionEvent actionEvent, Label error) throws IOException {
-        if(validateUserDataController.validateName(username, error) && validateUserDataController.validatePassword(password, error)) {
+        if(validateUserData.validateName(username, error) && validateUserData.validatePassword(password, error)) {
             List<User> users;
             users = databaseManager.selectAllUsers();
 
