@@ -2,6 +2,7 @@ package sample.Controller;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Node;
+import javafx.scene.control.ChoiceBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -27,6 +28,8 @@ public class RobotManagementController {
     public TextField connectivityEditText;
     public TextField nameDeleteText;
     public Label deleteError;
+    public ChoiceBox<String> imageCreateChoice;
+    public ChoiceBox<String> imageEditChoice;
 
     private LayoutController layoutController = new LayoutController();
     private DatabaseManager databaseManager = DatabaseManager.getInstance();
@@ -45,7 +48,7 @@ public class RobotManagementController {
         if (validateRobotData.validateNameExists(nameEditText.getText())
                 && validateRobotData.validateAllData(nameEditText.getText(), typeEditText.getText(),
                 iconEditText.getText(), imageEditText.getText(), connectivityEditText.getText(), editError)) {
-            String path = "/home/adrianadam/Desktop/FILS/Anul 3/Sem 2/MTDL/MTDLProject/src/sample/Resources/" + imageEditText.getText();
+            String path = "/home/adrianadam/Desktop/FILS/Anul 3/Sem 2/MTDL/MTDLProject/src/sample/Resources/" + imageEditChoice.getValue();
             databaseManager.updateRobot(nameEditText.getText(), currentRobotToEdit.getState(), currentRobotToEdit.getCoordX(),
                     currentRobotToEdit.getCoordY(), typeEditText.getText(), iconEditText.getText(), path, connectivityEditText.getText());
         }
@@ -59,10 +62,13 @@ public class RobotManagementController {
 
             typeEditText.setText(robot.getType());
             iconEditText.setText(robot.getIcon());
-            imageEditText.setText(path[path.length - 1]);
+            imageEditChoice.setValue(path[path.length - 1]);
+            //imageEditText.setText(path[path.length - 1]);
             connectivityEditText.setText(robot.getConnectivity());
 
             currentRobotToEdit = robot;
+        } else {
+            editError.setText("Robot doesn't exist");
         }
     }
 
@@ -71,7 +77,7 @@ public class RobotManagementController {
                 imageCreateText.getText(), connectivityCreateText.getText(), createError)
                 && !validateRobotData.validateNameExists(nameCreateText.getText())
                 && validateRobotData.validateNumberRobots()) {
-            String path = "/home/adrianadam/Desktop/FILS/Anul 3/Sem 2/MTDL/MTDLProject/src/sample/Resources/" + imageCreateText.getText();
+            String path = "/home/adrianadam/Desktop/FILS/Anul 3/Sem 2/MTDL/MTDLProject/src/sample/Resources/" + imageCreateChoice.getValue();
             databaseManager.insertNewRobot(nameCreateText.getText(), "idle", 0, 0, typeCreateText.getText(),
                     iconCreateText.getText(), path, connectivityCreateText.getText());
         }
@@ -81,6 +87,18 @@ public class RobotManagementController {
         if (validateRobotData.validateName(nameDeleteText.getText())
                 && validateRobotData.validateNameExists(nameDeleteText.getText())) {
             databaseManager.deleteRobot(nameDeleteText.getText());
+        } else {
+            deleteError.setText("Robot doesn't exist");
         }
+    }
+
+    public void getImageFiles(ActionEvent actionEvent) {
+        imageCreateChoice.setValue("Image");
+        imageCreateChoice.getItems().addAll("blue.jpg", "blue-light.png", "brown.jpg", "green.jpg", "grey.png", "orange.png",
+                "purple.jpg", "red.jpg", "white.png", "yellow.jpg");
+
+        imageEditChoice.setValue("Image");
+        imageEditChoice.getItems().addAll("blue.jpg", "blue-light.png", "brown.jpg", "green.jpg", "grey.png", "orange.png",
+                "purple.jpg", "red.jpg", "white.png", "yellow.jpg");
     }
 }

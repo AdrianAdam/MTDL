@@ -60,7 +60,7 @@ public class ScenarioController {
             databaseManager.updateRobot(currentRobot.getName(), currentRobot.getState(), currentRobot.getCoordX(), currentRobot.getCoordY()
                     ,currentRobot.getType(), currentRobot.getIcon(), currentRobot.getImage(), currentRobot.getConnectivity());
 
-            fileManagement.writeNewLine(" New coordinates: " + currentRobot.getCoordX() + " " + currentRobot.getCoordY() + "\n");
+            fileManagement.writeNewLine(" New coordinates: " + currentRobot.getCoordX() + " " + currentRobot.getCoordY() + "\nAd");
 
             /*
             File file = new File(currentRobot.getImage());
