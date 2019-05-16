@@ -14,10 +14,11 @@ public class RegisterController {
     public RegisterController() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
     }
 
-    public void registerUser(String username, String password, String email, Label error) throws SQLException {
+    public void registerUser(String username, String password, String email, Label error, Label success) throws SQLException {
         if(validateUserData.validatePassword(password, error)
                 && validateUserData.validateNameEmail(username, email, error)) {
             databaseManager.insertNewUser(username, password, email);
+            success.setText(success.getText() + "\nYou have successfully created a new account");
         }
     }
 }

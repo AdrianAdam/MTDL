@@ -15,13 +15,13 @@ public class ValidateUserData {
     }
 
     public boolean validateNameEmail(String name, String email, Label error) {
-        if(email.equals("") || name.equals("")) {
+        if (email.equals("") || name.equals("")) {
             error.setText(error.getText() + "\nName or email can't be empty");
         }
 
         List<User> users = databaseManager.selectAllUsers();
-        for(int i = 0; i < users.size(); i++) {
-            if(users.get(i).getEmail().equals(email) && users.get(i).getUsername().equals(name)) {
+        for (int i = 0; i < users.size(); i++) {
+            if (users.get(i).getEmail().equals(email) && users.get(i).getUsername().equals(name)) {
                 error.setText(error.getText() + "\nIncorrect name or email");
                 return false;
             }
@@ -31,19 +31,19 @@ public class ValidateUserData {
     }
 
     public boolean validateName(String name, Label error) {
-        if(name.equals("")) {
+        if (name.equals("")) {
             error.setText(error.getText() + "\nName can't be empty");
         }
 
         boolean ok = false;
         List<User> users = databaseManager.selectAllUsers();
-        for(int i = 0; i < users.size(); i++) {
+        for (int i = 0; i < users.size(); i++) {
             if(users.get(i).getUsername().equals(name)) {
                 ok = true;
             }
         }
 
-        if(ok) {
+        if (ok) {
             return true;
         } else {
             error.setText(error.getText() + "\nIncorrect name");
@@ -52,8 +52,22 @@ public class ValidateUserData {
     }
 
     public boolean validatePassword(String password, Label error) {
-        if(password.length() < 6) {
+        if (password.length() < 6) {
             error.setText(error.getText() + "\nPassword must have at least 6 characters");
+            return false;
+        }
+
+        return true;
+    }
+
+    public boolean validateNameEmailEdit(User currentUser, String name, String email, Label error) {
+        if (email.equals("") || name.equals("")) {
+            error.setText(error.getText() + "\nName or email can't be empty");
+            return false;
+        }
+
+        if (!currentUser.getUsername().equals(name) || !currentUser.getEmail().equals(email)) {
+            error.setText(error.getText() + "\nYou can't change your name or email");
             return false;
         }
 

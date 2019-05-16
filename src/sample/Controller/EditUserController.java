@@ -19,6 +19,7 @@ public class EditUserController {
     public Label roleText;
     public Label noRobotsText;
     public Label editError;
+    public Label editSuccess;
     private DatabaseManager databaseManager = DatabaseManager.getInstance();
     private LayoutController layoutController = new LayoutController();
     private ValidateUserData validateUserData = new ValidateUserData();
@@ -30,11 +31,13 @@ public class EditUserController {
         editError.setText("");
 
         if(validateUserData.validatePassword(passwordText.getText(), editError)
-                && validateUserData.validateNameEmail(usernameText.getText(), emailText.getText(), editError)) {
+                && validateUserData.validateNameEmailEdit(databaseManager.currentUser, usernameText.getText(), emailText.getText(), editError)) {
             User user = new User(databaseManager.currentUser.getId(), usernameText.getText(),
                     roleText.getText(), passwordText.getText(), emailText.getText(), Integer.parseInt(noRobotsText.getText()));
             databaseManager.updateUser(user);
             getUser(actionEvent);
+
+            editSuccess.setText("Successfully changed the user details");
         }
     }
 

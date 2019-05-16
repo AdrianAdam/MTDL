@@ -19,5 +19,6 @@
     <Label text="Number Robots" GridPane.columnIndex="1" GridPane.rowIndex="6" />
     <Label fx:id="noRobotsText" GridPane.columnIndex="2" GridPane.rowIndex="6" />
     <Button onAction="#saveEdit" text="Save" GridPane.columnIndex="1" GridPane.rowIndex="7" />
-    <Label fx:id="editError" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+    <Label fx:id="editError" GridPane.columnIndex="1" GridPane.rowIndex="8" GridPane.columnSpan="2" />
+    <Label fx:id="editSuccess" GridPane.columnIndex="1" GridPane.rowIndex="9" GridPane.columnSpan="2" />
 </GridPane>

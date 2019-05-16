@@ -21,15 +21,18 @@ public class RobotManagementController {
     public TextField connectivityCreateText;
     public Label editError;
     public Label createError;
+    public Label deleteError;
     public TextField nameEditText;
     public TextField typeEditText;
     public TextField iconEditText;
     public TextField imageEditText;
     public TextField connectivityEditText;
     public TextField nameDeleteText;
-    public Label deleteError;
     public ChoiceBox<String> imageCreateChoice;
     public ChoiceBox<String> imageEditChoice;
+    public Label createSuccess;
+    public Label editSuccess;
+    public Label deleteSuccess;
 
     private LayoutController layoutController = new LayoutController();
     private DatabaseManager databaseManager = DatabaseManager.getInstance();
@@ -51,6 +54,8 @@ public class RobotManagementController {
             String path = "/home/adrianadam/Desktop/FILS/Anul 3/Sem 2/MTDL/MTDLProject/src/sample/Resources/" + imageEditChoice.getValue();
             databaseManager.updateRobot(nameEditText.getText(), currentRobotToEdit.getState(), currentRobotToEdit.getCoordX(),
                     currentRobotToEdit.getCoordY(), typeEditText.getText(), iconEditText.getText(), path, connectivityEditText.getText());
+
+            editSuccess.setText(editSuccess.getText() + "\nSuccessfully edited the robot");
         }
     }
 
@@ -67,8 +72,10 @@ public class RobotManagementController {
             connectivityEditText.setText(robot.getConnectivity());
 
             currentRobotToEdit = robot;
+
+            editSuccess.setText(editSuccess.getText() + "\nRobot found");
         } else {
-            editError.setText("Robot doesn't exist");
+            editError.setText(editError.getText() + "\nRobot doesn't exist");
         }
     }
 
@@ -80,6 +87,8 @@ public class RobotManagementController {
             String path = "/home/adrianadam/Desktop/FILS/Anul 3/Sem 2/MTDL/MTDLProject/src/sample/Resources/" + imageCreateChoice.getValue();
             databaseManager.insertNewRobot(nameCreateText.getText(), "idle", 0, 0, typeCreateText.getText(),
                     iconCreateText.getText(), path, connectivityCreateText.getText());
+
+            createSuccess.setText(createSuccess.getText() + "\nYou have successfully created a new robot");
         }
     }
 
@@ -87,8 +96,10 @@ public class RobotManagementController {
         if (validateRobotData.validateName(nameDeleteText.getText())
                 && validateRobotData.validateNameExists(nameDeleteText.getText())) {
             databaseManager.deleteRobot(nameDeleteText.getText());
+
+            deleteSuccess.setText(deleteSuccess.getText() + "\nSuccessfully deleted the robot");
         } else {
-            deleteError.setText("Robot doesn't exist");
+            deleteError.setText(deleteError.getText() + "\nRobot doesn't exist");
         }
     }
 

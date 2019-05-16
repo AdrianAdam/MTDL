@@ -15,6 +15,7 @@ public class MainController {
     public TextField emailRegister;
     public Label loginError;
     public Label registerError;
+    public Label registerSuccess;
     private RegisterController registerController = new RegisterController();
     private LoginController loginController = new LoginController();
 
@@ -28,6 +29,6 @@ public class MainController {
 
     public void register(ActionEvent actionEvent) throws SQLException, IOException {
         registerError.setText("");
-        registerController.registerUser(usernameTextRegister.getText(), passwordRegister.getText(), emailRegister.getText(), registerError);
+        registerController.registerUser(usernameTextRegister.getText(), passwordRegister.getText(), emailRegister.getText(), registerError, registerSuccess);
     }
 }

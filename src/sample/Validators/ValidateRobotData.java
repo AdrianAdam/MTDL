@@ -17,7 +17,7 @@ public class ValidateRobotData {
     public boolean validateNameExists(String name) {
         List<Robot> robots = databaseManager.selectAllRobots();
 
-        for(int i = 0; i < robots.size(); i++) {
+        for (int i = 0; i < robots.size(); i++) {
             if (robots.get(i).getName().equals(name)) {
                 return true;
             }
