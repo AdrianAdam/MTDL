@@ -9,22 +9,22 @@ public class ValidateRoboMovement {
 
         switch (direction) {
             case "up":
-                if (coordY - movementValue < 85) {
+                if (coordY - movementValue < 200) {
                     check = false;
                 }
                 break;
             case "down":
-                if (coordY + movementValue > 585) {
+                if (coordY + movementValue > 670) {
                     check = false;
                 }
                 break;
             case "left":
-                if (coordX - movementValue < 567) {
+                if (coordX - movementValue < 500) {
                     check = false;
                 }
                 break;
             case "right":
-                if (coordX + movementValue > 1367) {
+                if (coordX + movementValue > 1250) {
                     check = false;
                 }
                 break;

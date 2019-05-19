@@ -4,6 +4,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import sample.FileManagement.FileManagement;
@@ -33,6 +35,16 @@ public class ScenarioController {
     public Label robot9;
     public Label robot10;
     public TextField moveValue;
+    public ImageView image1;
+    public ImageView image2;
+    public ImageView image3;
+    public ImageView image4;
+    public ImageView image5;
+    public ImageView image6;
+    public ImageView image7;
+    public ImageView image8;
+    public ImageView image9;
+    public ImageView image10;
 
     private DatabaseManager databaseManager = DatabaseManager.getInstance();
     private LayoutController layoutController = new LayoutController();
@@ -41,11 +53,13 @@ public class ScenarioController {
 
     private Robot currentRobot = null;
     private List<Robot> robots = null;
+    private List<ImageView> imageViews = null;
+    private List<Label> labels = null;
 
     public ScenarioController() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException, FileNotFoundException, UnsupportedEncodingException {
     }
 
-    public void startMoving(MouseEvent mouseEvent) throws SQLException, FileNotFoundException, MalformedURLException {
+    public void startMoving(MouseEvent mouseEvent) throws SQLException, MalformedURLException {
         if (mouseEvent.getSource().toString().contains("robot")) {
             String[] text = mouseEvent.getSource().toString().split("'");
             String labelRobot = text[1];
@@ -62,24 +76,27 @@ public class ScenarioController {
 
             fileManagement.writeNewLine(" New coordinates: " + currentRobot.getCoordX() + " " + currentRobot.getCoordY() + "\nAd");
 
-            /*
-            File file = new File(currentRobot.getImage());
-            String localUri = file.toURI().toURL().toExternalForm();
-            Image image = new Image(localUri);
-            ImageView imageView = new ImageView(image);
-            imageView.setX(currentRobot.getCoordX());
-            imageView.setY(currentRobot.getCoordY());
-            imageView.setFitHeight(50);
-            imageView.setFitWidth(50);
-            imageView.setPreserveRatio(true);
-            System.out.println(image.exceptionProperty());
-            */
+            updateVisualPositionRobot();
+        }
+    }
+
+    public void updateVisualPositionRobot() {
+        for(int i = 0; i < labels.size(); i++) {
+            if (labels.get(i).getText().equals(currentRobot.getName())) {
+                Image image = new Image(currentRobot.getImage());
+                imageViews.get(i).setImage(image);
+                imageViews.get(i).setX(currentRobot.getCoordX());
+                imageViews.get(i).setY(currentRobot.getCoordY());
+                imageViews.get(i).setFitHeight(50);
+                imageViews.get(i).setFitWidth(50);
+                imageViews.get(i).setPreserveRatio(true);
+            }
         }
     }
 
     public void getRobots(ActionEvent actionEvent) {
         robots = databaseManager.selectAllRobots();
-        List<Label> labels = new ArrayList<>();
+        labels = new ArrayList<>();
         labels.add(robot1);
         labels.add(robot2);
         labels.add(robot3);
@@ -90,6 +107,18 @@ public class ScenarioController {
         labels.add(robot8);
         labels.add(robot9);
         labels.add(robot10);
+
+        imageViews = new ArrayList<>();
+        imageViews.add(image1);
+        imageViews.add(image2);
+        imageViews.add(image3);
+        imageViews.add(image4);
+        imageViews.add(image5);
+        imageViews.add(image6);
+        imageViews.add(image7);
+        imageViews.add(image8);
+        imageViews.add(image9);
+        imageViews.add(image10);
 
         for (int i = 0; i < robots.size(); i++) {
             labels.get(i).setText(robots.get(i).getName());
@@ -134,12 +163,12 @@ public class ScenarioController {
     }
 
     public void executeMovement(String direction) throws SQLException {
-        System.out.println("am mutat");
         MovementFactory movementFactory = new MovementFactory();
         Movement movement = movementFactory.getMovement(direction);
         movement.move(currentRobot, Integer.parseInt(moveValue.getText()));
 
         databaseManager.updateRobot(currentRobot.getName(), currentRobot.getState(), currentRobot.getCoordX(), currentRobot.getCoordY(), currentRobot.getType(),
                 currentRobot.getIcon(), currentRobot.getImage(), currentRobot.getConnectivity());
+        updateVisualPositionRobot();
     }
 }

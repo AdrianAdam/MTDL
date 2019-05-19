@@ -15,7 +15,6 @@
     <Label text="Icon:" GridPane.columnIndex="1" GridPane.rowIndex="3" />
     <TextField fx:id="iconCreateText" GridPane.columnIndex="2" GridPane.rowIndex="3" />
     <Label text="Image" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-    <TextField fx:id="imageCreateText" GridPane.columnIndex="2" GridPane.rowIndex="4" />
     <ChoiceBox fx:id="imageCreateChoice" prefHeight="26.0" prefWidth="171.0" GridPane.columnIndex="2" GridPane.rowIndex="4" />
     <Label text="Connectivity" GridPane.columnIndex="1" GridPane.rowIndex="5" />
     <TextField fx:id="connectivityCreateText" GridPane.columnIndex="2" GridPane.rowIndex="5" />
