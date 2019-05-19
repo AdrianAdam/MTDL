@@ -17,7 +17,6 @@ public class RobotManagementController {
     public TextField nameCreateText;
     public TextField typeCreateText;
     public TextField iconCreateText;
-    public TextField imageCreateText;
     public TextField connectivityCreateText;
     public Label editError;
     public Label createError;
@@ -25,7 +24,6 @@ public class RobotManagementController {
     public TextField nameEditText;
     public TextField typeEditText;
     public TextField iconEditText;
-    public TextField imageEditText;
     public TextField connectivityEditText;
     public TextField nameDeleteText;
     public ChoiceBox<String> imageCreateChoice;
@@ -50,8 +48,8 @@ public class RobotManagementController {
     public void saveEdit(ActionEvent actionEvent) throws SQLException {
         if (validateRobotData.validateNameExists(nameEditText.getText())
                 && validateRobotData.validateAllData(nameEditText.getText(), typeEditText.getText(),
-                iconEditText.getText(), imageEditText.getText(), connectivityEditText.getText(), editError)) {
-            String path = "/home/adrianadam/Desktop/FILS/Anul 3/Sem 2/MTDL/MTDLProject/src/sample/Resources/" + imageEditChoice.getValue();
+                iconEditText.getText(), imageEditChoice.getValue(), connectivityEditText.getText(), editError)) {
+            String path = "sample/Resources/" + imageEditChoice.getValue();
             databaseManager.updateRobot(nameEditText.getText(), currentRobotToEdit.getState(), currentRobotToEdit.getCoordX(),
                     currentRobotToEdit.getCoordY(), typeEditText.getText(), iconEditText.getText(), path, connectivityEditText.getText());
 
@@ -68,7 +66,6 @@ public class RobotManagementController {
             typeEditText.setText(robot.getType());
             iconEditText.setText(robot.getIcon());
             imageEditChoice.setValue(path[path.length - 1]);
-            //imageEditText.setText(path[path.length - 1]);
             connectivityEditText.setText(robot.getConnectivity());
 
             currentRobotToEdit = robot;
@@ -81,10 +78,10 @@ public class RobotManagementController {
 
     public void saveCreate(ActionEvent actionEvent) throws SQLException {
         if (validateRobotData.validateAllData(nameCreateText.getText(), typeCreateText.getText(), iconCreateText.getText(),
-                imageCreateText.getText(), connectivityCreateText.getText(), createError)
+                imageCreateChoice.getValue(), connectivityCreateText.getText(), createError)
                 && !validateRobotData.validateNameExists(nameCreateText.getText())
                 && validateRobotData.validateNumberRobots()) {
-            String path = "/home/adrianadam/Desktop/FILS/Anul 3/Sem 2/MTDL/MTDLProject/src/sample/Resources/" + imageCreateChoice.getValue();
+            String path = "sample/Resources/" + imageCreateChoice.getValue();
             databaseManager.insertNewRobot(nameCreateText.getText(), "idle", 0, 0, typeCreateText.getText(),
                     iconCreateText.getText(), path, connectivityCreateText.getText());
 
