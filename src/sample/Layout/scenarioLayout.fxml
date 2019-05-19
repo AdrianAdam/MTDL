@@ -8,6 +8,12 @@
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.shape.Rectangle?>
 
+<!--
+  ~ Developed by Adrian Adam on 5/19/19 6:39 PM.
+  ~ Last modified 5/19/19 6:16 PM.
+  ~ Copyright (c) 2019. All rights reserved.
+  -->
+
 <AnchorPane prefHeight="1080.0" prefWidth="1920.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.ScenarioController">
 
     <Rectangle arcHeight="5.0" arcWidth="5.0" height="500.0" onMouseClicked="#startMoving" stroke="BLACK" strokeType="INSIDE" width="800.0" x="500.0" y="200.0" GridPane.columnIndex="1" GridPane.columnSpan="3" />

@@ -1,3 +1,9 @@
+/*
+ * Developed by Adrian Adam on 5/19/19 6:39 PM.
+ * Last modified 5/15/19 1:48 PM.
+ * Copyright (c) 2019. All rights reserved.
+ */
+
 package sample.Manager;
 
 import sample.Model.Robot;

@@ -1,3 +1,9 @@
+/*
+ * Developed by Adrian Adam on 5/19/19 6:38 PM.
+ * Last modified 5/12/19 7:54 PM.
+ * Copyright (c) 2019. All rights reserved.
+ */
+
 package sample.Controller;
 
 import javafx.application.Platform;

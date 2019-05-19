@@ -1,3 +1,9 @@
+/*
+ * Developed by Adrian Adam on 5/19/19 6:38 PM.
+ * Last modified 5/19/19 6:11 PM.
+ * Copyright (c) 2019. All rights reserved.
+ */
+
 package sample.Controller;
 
 import javafx.event.ActionEvent;

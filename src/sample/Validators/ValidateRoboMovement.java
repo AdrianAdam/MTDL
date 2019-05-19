@@ -1,3 +1,9 @@
+/*
+ * Developed by Adrian Adam on 5/19/19 6:40 PM.
+ * Last modified 5/19/19 6:27 PM.
+ * Copyright (c) 2019. All rights reserved.
+ */
+
 package sample.Validators;
 
 public class ValidateRoboMovement {

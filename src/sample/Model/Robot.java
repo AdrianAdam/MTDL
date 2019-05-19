@@ -1,3 +1,9 @@
+/*
+ * Developed by Adrian Adam on 5/19/19 6:39 PM.
+ * Last modified 5/16/19 8:32 AM.
+ * Copyright (c) 2019. All rights reserved.
+ */
+
 package sample.Model;
 
 import lombok.AllArgsConstructor;
