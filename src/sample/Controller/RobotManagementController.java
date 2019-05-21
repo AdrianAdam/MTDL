@@ -44,6 +44,8 @@ public class RobotManagementController {
 
     private Robot currentRobotToEdit = null;
 
+    private boolean imageInstantiateCheck = false;
+
     public RobotManagementController() throws ClassNotFoundException, SQLException, InstantiationException, IllegalAccessException {
     }
 
@@ -64,7 +66,7 @@ public class RobotManagementController {
     }
 
     public void searchEdit(ActionEvent actionEvent) throws SQLException {
-        if (validateRobotData.validateNameExists(nameEditText.getText())) {
+        if (validateRobotData.validateNameExists(nameEditText.getText()) && imageInstantiateCheck) {
             Robot robot = databaseManager.selectOneRobot(nameEditText.getText());
 
             String[] path = robot.getImage().split("/");
@@ -78,20 +80,24 @@ public class RobotManagementController {
 
             editSuccess.setText(editSuccess.getText() + "\nRobot found");
         } else {
-            editError.setText(editError.getText() + "\nRobot doesn't exist");
+            editError.setText(editError.getText() + "\nRobot doesn't exist or you didn't instantiate the images");
         }
     }
 
     public void saveCreate(ActionEvent actionEvent) throws SQLException {
-        if (validateRobotData.validateAllData(nameCreateText.getText(), typeCreateText.getText(), iconCreateText.getText(),
-                imageCreateChoice.getValue(), connectivityCreateText.getText(), createError)
-                && !validateRobotData.validateNameExists(nameCreateText.getText())
-                && validateRobotData.validateNumberRobots()) {
-            String path = "sample/Resources/" + imageCreateChoice.getValue();
-            databaseManager.insertNewRobot(nameCreateText.getText(), "idle", 0, 0, typeCreateText.getText(),
-                    iconCreateText.getText(), path, connectivityCreateText.getText());
+        if (imageInstantiateCheck) {
+            if (validateRobotData.validateAllData(nameCreateText.getText(), typeCreateText.getText(), iconCreateText.getText(),
+                    imageCreateChoice.getValue(), connectivityCreateText.getText(), createError)
+                    && !validateRobotData.validateNameExists(nameCreateText.getText())
+                    && validateRobotData.validateNumberRobots()) {
+                String path = "sample/Resources/" + imageCreateChoice.getValue();
+                databaseManager.insertNewRobot(nameCreateText.getText(), "idle", 0, 0, typeCreateText.getText(),
+                        iconCreateText.getText(), path, connectivityCreateText.getText());
 
-            createSuccess.setText(createSuccess.getText() + "\nYou have successfully created a new robot");
+                createSuccess.setText(createSuccess.getText() + "\nYou have successfully created a new robot");
+            }
+        } else {
+            createError.setText(createError.getText() + "\nYou didn't instantiate the images");
         }
     }
 
@@ -114,5 +120,7 @@ public class RobotManagementController {
         imageEditChoice.setValue("Image");
         imageEditChoice.getItems().addAll("blue.jpg", "blue-light.png", "brown.jpg", "green.jpg", "grey.png", "orange.png",
                 "purple.jpg", "red.jpg", "white.png", "yellow.jpg");
+
+        imageInstantiateCheck = true;
     }
 }

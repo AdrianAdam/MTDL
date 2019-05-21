@@ -5,6 +5,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.GridPane?>
 
+<!--
+  ~ Developed by Adrian Adam on 5/19/19 6:39 PM.
+  ~ Last modified 5/16/19 2:21 PM.
+  ~ Copyright (c) 2019. All rights reserved.
+  -->
+
 <GridPane alignment="center" hgap="10" prefHeight="1080.0" prefWidth="1920.0" vgap="10" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller.MainController">
     <Label text="Username:" GridPane.columnIndex="1" GridPane.rowIndex="1" />
     <TextField fx:id="usernameTextLogin" GridPane.columnIndex="2" GridPane.rowIndex="1" />
